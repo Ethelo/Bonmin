@@ -685,6 +685,10 @@ namespace Bonmin
             if (results_[i].downStatus()== 2 || results_[i].upStatus()==2) {
               //continue;
             }
+            // handle case where infeasible both down and up
+            if (results_[i].downStatus()==1 && results_[i].upStatus()==1) {
+              continue;
+            }            
             if (results_[i].upStatus()!=1) {
               assert (results_[i].upStatus()>=0);
               upEstimate = results_[i].upChange();
